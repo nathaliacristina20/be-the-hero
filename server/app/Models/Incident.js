@@ -3,8 +3,8 @@
 const Model = use('Model')
 
 class Incident extends Model {
-  users () {
-    return this.belongsTo('App/Models/User')
+  ongs () {
+    return this.belongsTo('App/Models/Ong')
   }
 }
 

@@ -1,3 +1,6 @@
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
 class IncidentsSchema extends Schema {
@@ -8,10 +11,10 @@ class IncidentsSchema extends Schema {
       table.string('description').notNullable()
       table.decimal('value').notNullable()
       table
-        .string('user_id')
+        .string('ong_id')
         .unsigned()
         .references('id')
-        .inTable('users')
+        .inTable('ongs')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
       table.timestamps()

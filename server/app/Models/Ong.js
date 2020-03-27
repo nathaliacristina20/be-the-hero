@@ -3,7 +3,7 @@
 const Model = use('Model')
 
 class Ong extends Model {
-  users () {
+  user () {
     return this.belongsTo('App/Models/User')
   }
 }

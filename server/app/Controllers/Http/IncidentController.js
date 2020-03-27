@@ -5,7 +5,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Incident = use('App/Models/Incident')
-
+const Ong = use('App/Models/Ong')
 /**
  * Resourceful controller for interacting with incidents
  */
@@ -35,12 +35,6 @@ class IncidentController {
       .offset((page - 1) * 5)
       .fetch()
 
-    // const incidents = await Incident
-    //   .query()
-    //   .limit(5)
-    //   .offset((page - 1) * 5)
-    //   .fetch()
-
     return incidents
   }
 
@@ -67,7 +61,13 @@ class IncidentController {
   async store ({ request, response, auth }) {
     const data = request.only(['title', 'description', 'value'])
     const userId = auth.jwtPayload.uid
-    const incident = await Incident.create({ ...data, user_id: userId })
+
+    const { rows } = await Ong.query()
+      .where('user_id', userId)
+      .with('user')
+      .fetch()
+
+    const incident = await Incident.create({ ...data, ong_id: rows[0].id })
     return incident
   }
 
