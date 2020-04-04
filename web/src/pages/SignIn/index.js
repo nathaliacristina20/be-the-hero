@@ -1,21 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Form, Logo, ContentForm, Title } from './styles';
 
-import { Container, Form, Title } from './styles';
+import logo from '~/assets/logo.svg';
+import heroes from '~/assets/heroes.png';
+import Button from '~/components/Button';
+import Input from '~/components/Input';
 
-import logo from '../../assets/logo.svg';
-import heroes from '../../assets/heroes.png';
+const link = '';
 
 export default function SignIn() {
   return (
     <Container>
       <Form>
-        <img src={logo} alt="Be The Hero" />
-        <form action="">
+        <Logo src={logo} alt="Be The Hero" />
+        <ContentForm>
           <Title>Faça seu login</Title>
-          <input type="text" placeholder="Sua ID" />
-          <button type="submit">Entrar</button>
-          <a href="/register">Não tenho cadastro</a>
-        </form>
+          <Input name="userid" type="text" placeholder="Seu ID" />
+          <Button type="submit" text="Entrar" />
+          <Link to={link}>Não tenho cadastro</Link>
+        </ContentForm>
       </Form>
       <img src={heroes} alt="Heroes" />
     </Container>

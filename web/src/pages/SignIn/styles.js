@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { Form as Unform } from '@unform/web';
-import colors from '../../styles/colors';
+import { colors } from '~/styles/colors';
 
 export const Container = styled.div`
   width: 100%;
@@ -18,58 +18,26 @@ export const Form = styled(Unform)`
   max-width: 350px;
   margin-right: 30px;
 
-  form {
-    margin-top: 100px;
+  a {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    color: ${colors.title};
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
 
-    input {
-      width: 100%;
-      height: 60px;
-      color: #333;
-      border: 1px solid #dcdce6;
-      border-radius: 8px;
-      padding: 0 24px;
-    }
-
-    button {
-      width: 100%;
-      height: 60px;
-      background: #e02041;
-      border: 0;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: 700;
-      margin-top: 16px;
-      display: inline-block;
-      text-align: center;
-      text-decoration: none;
-      font-size: 18px;
-      line-height: 60px;
-      transition: filter 0.2s;
-      cursor: pointer;
-
-      &:hover {
-        filter: brightness(90%);
-      }
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      margin-top: 40px;
-      color: #41414d;
-      font-size: 18px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.2s;
-
-      &:hover {
-        opacity: 0.8;
-      }
-      svg {
-        margin-right: 8px;
-      }
+    &:hover {
+      opacity: 0.8;
     }
   }
+`;
+
+export const Logo = styled.img``;
+
+export const ContentForm = styled.div`
+  margin-top: 100px;
 `;
 
 export const Title = styled.h1`

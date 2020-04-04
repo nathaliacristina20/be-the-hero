@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { colors } from '~/styles/colors';
 
 export const Container = styled.div``;
 
 export const Wrapper = styled.div`
-  background: #f0f0f5;
+  background: ${colors.background};
   display: flex;
   flex-direction: column;
   justify-content: center;
