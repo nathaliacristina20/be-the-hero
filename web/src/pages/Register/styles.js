@@ -59,8 +59,4 @@ export const Text = styled.p`
 export const Form = styled(Unform)`
   width: 100%;
   max-width: 450px;
-
-  input {
-    margin-top: 8px;
-  }
 `;

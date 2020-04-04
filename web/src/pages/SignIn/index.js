@@ -14,7 +14,8 @@ export default function SignIn() {
         <Logo />
         <ContentForm>
           <Title>Faça seu login</Title>
-          <Input name="userid" type="text" placeholder="Seu ID" />
+          <Input name="email" type="email" placeholder="E-mail" />
+          <Input name="password" type="password" placeholder="Senha" />
           <Button type="submit" text="Entrar" />
           <Link to="/cadastro">Não tenho cadastro</Link>
         </ContentForm>
