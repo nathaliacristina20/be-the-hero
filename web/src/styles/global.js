@@ -38,4 +38,11 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 
+    .input-group {
+      display: flex;
+      input + input {
+        margin-left: 8px;
+      }
+    }
+
 `;
