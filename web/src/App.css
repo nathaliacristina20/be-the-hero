@@ -7,8 +7,6 @@
   justify-content: center;
   align-items: center;
 
-  background: url('assets/mountains.svg'),
-    linear-gradient(to top, rgb(25, 24, 31), transparent);
   background-size: contain;
   background-position: center 70%;
   background-repeat: no-repeat;
