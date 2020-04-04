@@ -13,11 +13,7 @@ export default function Input({ name, ...rest }) {
       path: 'value',
     });
   }, [fieldName, registerField]);
-  return (
-    <Container>
-      <input ref={inputRef} defaultValue={defaultValue} {...rest} />
-    </Container>
-  );
+  return <Container ref={inputRef} defaultValue={defaultValue} {...rest} />;
 }
 
 Input.propTypes = {
