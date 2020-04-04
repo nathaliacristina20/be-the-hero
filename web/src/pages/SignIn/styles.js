@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const Form = styled(Unform)`
@@ -33,8 +33,6 @@ export const Form = styled(Unform)`
     }
   }
 `;
-
-export const Logo = styled.img``;
 
 export const ContentForm = styled.div`
   margin-top: 100px;
