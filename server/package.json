@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "adonis serve --dev",
     "start": "node server.js",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [
     "adonisjs",
