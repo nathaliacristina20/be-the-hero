@@ -26,6 +26,7 @@ Este projeto foi desenvolvido com tecnologias diferentes das apresentadas na Sem
 
 - AdonisJS
 - ReactJS
+- Redux
 - React Native
 - Typescript
 - ESLint
