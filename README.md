@@ -33,7 +33,6 @@ Este projeto foi desenvolvido com tecnologias diferentes das apresentadas na Sem
 - Prettier
 - Unform
 - PostgreSQL
-- Celebrate
 - Jest 
 - React Router DOM
 - React Navigation
