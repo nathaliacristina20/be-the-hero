@@ -11,10 +11,10 @@ class IncidentsSchema extends Schema {
       table.string('description').notNullable()
       table.decimal('value').notNullable()
       table
-        .string('ong_id')
+        .integer('user_id')
         .unsigned()
         .references('id')
-        .inTable('ongs')
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
       table.timestamps()

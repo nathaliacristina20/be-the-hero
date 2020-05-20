@@ -5,16 +5,16 @@ const Schema = use('Schema')
 
 class IncidentsSchema extends Schema {
   up () {
-    this.create('incidents', (table) => {
+    this.create('ongs', (table) => {
       table.increments()
-      table.string('title').notNullable()
-      table.string('description').notNullable()
-      table.decimal('value').notNullable()
+      table.string('name').notNullable()
+      table.string('whatsapp').notNullable()
+      table.string('city').notNullable()
       table
-        .string('ong_id')
+        .integer('user_id')
         .unsigned()
         .references('id')
-        .inTable('ongs')
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
       table.timestamps()
@@ -22,7 +22,7 @@ class IncidentsSchema extends Schema {
   }
 
   down () {
-    this.drop('incidents')
+    this.drop('ongs')
   }
 }
 
