@@ -2,16 +2,14 @@
 
 const Route = use('Route')
 
-Route.post('/users', 'UserController.store')
+Route.post('/users', 'UserController.store').validator('StoreUser')
 
-Route.post('/sessions', 'SessionController.store').validator('Session')
+Route.post('/sessions', 'SessionController.store').validator('StoreSession')
 
 Route.group(() => {
-  Route.post('/ongs', 'OngController.store')
-  Route.get('/ongs', 'OngController.index')
-
   Route.post('/incidents', 'IncidentController.store')
   Route.get('/incidents', 'IncidentController.index')
+  Route.get('/incidents/:id', 'IncidentController.show')
   Route.delete('/incidents/:id', 'IncidentController.destroy')
 
   Route.get('/profile', 'ProfileController.index')

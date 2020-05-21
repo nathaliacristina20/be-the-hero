@@ -10,6 +10,8 @@ class User extends Model {
   static boot () {
     super.boot()
 
+    this.addHook('beforeCreate', 'UserHook.uuid')
+
     this.addHook('beforeSave', async (userInstance) => {
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password)
@@ -17,8 +19,16 @@ class User extends Model {
     })
   }
 
-  tokens () {
-    return this.hasMany('App/Models/Token')
+  static get primaryKey () {
+    return 'id'
+  }
+
+  static get incrementing () {
+    return false
+  }
+
+  static get hidden () {
+    return ['password']
   }
 }
 
