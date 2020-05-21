@@ -27,13 +27,17 @@ class ExceptionHandler extends BaseExceptionHandler {
       return response.status(error.status).send(error.messages)
     }
 
+    if (error.name === 'AppError') {
+      return response.status(error.status).json({ error: error.message })
+    }
+
     if (Env.get('NODE_ENV') === 'development') {
       const youch = new Youch(error, request.request)
       const errorJSON = await youch.toJSON()
       return response.status(error.status).send(errorJSON)
     }
 
-    return response.status(error.status)
+    return response.status(500).json({ error: 'Internal server error' })
   }
 
   /**
