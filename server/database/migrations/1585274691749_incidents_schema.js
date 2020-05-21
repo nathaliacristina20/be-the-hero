@@ -6,12 +6,12 @@ const Schema = use('Schema')
 class IncidentsSchema extends Schema {
   up () {
     this.create('incidents', (table) => {
-      table.increments()
+      table.uuid('id').primary()
       table.string('title').notNullable()
       table.string('description').notNullable()
-      table.decimal('value').notNullable()
+      table.decimal('value')
       table
-        .integer('user_id')
+        .uuid('user_id')
         .unsigned()
         .references('id')
         .inTable('users')
