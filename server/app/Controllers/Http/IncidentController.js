@@ -5,7 +5,10 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Incident = use('App/Models/Incident')
-const Ong = use('App/Models/Ong')
+
+const CreateIncidentService = use('App/Services/CreateIncidentService')
+const DestroyIncidentService = use('App/Services/DestroyIncidentService')
+
 /**
  * Resourceful controller for interacting with incidents
  */
@@ -30,7 +33,7 @@ class IncidentController {
 
     const incidents = await Incident
       .query()
-      .with('ongs')
+      .with('user')
       .limit(5)
       .offset((page - 1) * 5)
       .fetch()
@@ -60,14 +63,12 @@ class IncidentController {
    */
   async store ({ request, response, auth }) {
     const data = request.only(['title', 'description', 'value'])
+
     const userId = auth.jwtPayload.uid
 
-    const { rows } = await Ong.query()
-      .where('user_id', userId)
-      .with('user')
-      .fetch()
+    const createIncident = new CreateIncidentService()
+    const incident = await createIncident.execute({ ...data, user_id: userId })
 
-    const incident = await Incident.create({ ...data, ong_id: rows[0].id })
     return incident
   }
 
@@ -81,6 +82,13 @@ class IncidentController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const incident = await Incident
+      .query()
+      .where('id', params.id)
+      .with('user')
+      .fetch()
+
+    return incident
   }
 
   /**
@@ -104,6 +112,7 @@ class IncidentController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+
   }
 
   /**
@@ -114,17 +123,13 @@ class IncidentController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
-    const ongId = '94374a4f'
+  async destroy ({ params, request, response, auth }) {
+    const userId = auth.jwtPayload.uid
 
-    const incident = await Incident
-      .findOrFail(params.id)
+    const destroyIncident = new DestroyIncidentService()
+    const incident = await destroyIncident.execute({ id: params.id, userId })
 
-    if (incident.ong_id !== ongId) {
-      return response.status(401).json({ error: 'Operation not permitted' })
-    }
-
-    await incident.delete()
+    return incident
   }
 }
 

@@ -1,14 +1,12 @@
 'use strict'
 
-const crypto = use('crypto')
-
-const User = use('App/Models/User')
-
+const UserService = use('App/Services/CreateUserService')
 class UserController {
   async store ({ request, response, auth }) {
-    const data = request.only(['username', 'email', 'password', 'provider'])
-    const id = crypto.randomBytes(4).toString('HEX')
-    const user = await User.create({ id, ...data })
+    const data = request.only(['email', 'password', 'provider', 'city', 'uf', 'whatsapp', 'document', 'type_document', 'name'])
+
+    const createUser = new UserService()
+    const user = await createUser.execute(data)
     return user
   }
 }

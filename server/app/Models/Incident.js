@@ -3,8 +3,14 @@
 const Model = use('Model')
 
 class Incident extends Model {
-  ongs () {
-    return this.belongsTo('App/Models/Ong')
+  static boot () {
+    super.boot()
+
+    this.addHook('beforeCreate', 'IncidentHook.uuid')
+  }
+
+  user () {
+    return this.belongsTo('App/Models/User')
   }
 }
 
